@@ -1,0 +1,124 @@
+.avatar-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.avatar-circle {
+  position: relative;
+  width: clamp(210px, 23vw, 330px);
+  aspect-ratio: 1;
+  border: 9px solid #f47b35;
+  border-radius: 50%;
+  padding: 0;
+  background: #f47b35;
+  overflow: hidden;
+}
+
+.avatar-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.avatar-ring {
+  position: absolute;
+  inset: -15px;
+  border: 1px solid #1c1c1c;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* GREETING */
+
+.greeting-bubble {
+  position: absolute;
+  z-index: 10;
+  top: -55px;
+  right: 0;
+  width: 280px;
+  max-width: calc(100vw - 40px);
+  padding: 28px 24px;
+  background: #fffdf7;
+  border: 1px solid #d8d2c5;
+  border-radius: 25px;
+  box-shadow: 0 12px 35px #00000012;
+  animation: bubbleEnter 0.45s ease-out both;
+}
+
+.greeting-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -13px;
+  left: 45px;
+  width: 25px;
+  height: 25px;
+  background: #fffdf7;
+  border-right: 1px solid #d8d2c5;
+  border-bottom: 1px solid #d8d2c5;
+  transform: rotate(45deg);
+}
+
+.greeting-bubble h3 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.greeting-bubble p {
+  font-size: 17px;
+  color: #555;
+}
+
+.greeting-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  border: none;
+  background: transparent;
+  font-size: 25px;
+}
+
+@keyframes bubbleEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .greeting-bubble {
+    right: -20px;
+    top: -90px;
+    width: 240px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-side {
+    transform: none;
+  }
+
+  .avatar-wrapper {
+    margin: 65px auto 30px;
+  }
+
+  .greeting-bubble {
+    right: auto;
+    left: 50%;
+    top: -90px;
+    margin-left: 0;
+    width: 230px;
+    transform: translateX(-50%);
+  }
+}
